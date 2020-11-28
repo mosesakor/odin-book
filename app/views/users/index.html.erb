@@ -1,0 +1,13 @@
+<h1>Users#index</h1>
+<p>Find me in app/views/users/index.html.erb</p>
+<h1>Hello <%=current_user.email%></h1>
+
+<% @users.each do |user| %>
+  <p> <%= user.first_name %> </p>
+  <p> <%= user.email %> </p>
+  <% if current_user.pending_friends.any? {|f| f == user } %>
+    <%= link_to "Cancel friend request", delete_friend_request_path(current_user.id, user.id), method: :delete%>
+  <% else %>
+    <%= link_to "Add friend", friend_request_path(user.id), method: :post %>
+  <% end %>
+<% end %>

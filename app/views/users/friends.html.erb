@@ -1,0 +1,7 @@
+<h1>Friends of <%= @user.first_name%></h1>
+<% @friends.each  do |friend| %>
+  <div>
+    <span><%= friend.first_name %></span>
+  </div>
+  <%= link_to "Unfriend :(", delete_friend_request_path(friend.id, current_user.id), method: :delete %>
+<% end %> 

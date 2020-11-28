@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+@import 'bootstrap';
+@import "rails_bootstrap_forms";
+
+
+.forms {
+  line-height: 2.1rem;
+}

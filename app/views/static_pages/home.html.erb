@@ -1,2 +1,36 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<%= render 'partials/posts' %>
+<div class="col-md-8">
+<h3>Your timeline</h3>
+
+<% if @timeline_content.any? %>
+  <% @timeline_content.each do |post| %>
+    <div class="a_post">
+      <div>
+        <p>
+        <strong><%= post.user.first_name %></strong>
+        <br>
+        <%= post.content %>
+        </p>
+        <span>
+        Posted <%= time_ago_in_words(post.created_at) %> ago.
+        </span>
+      </div>
+      <div>
+        <a>
+          <span>
+          <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+          <% if pre_like %>
+            <%= button_to "Unlike", post_like_path(post.id, pre_like), method: :delete %>
+          <% else %>
+            <%= button_to "Like", post_likes_path(post_id: post.id), method: :post %>
+          <% end %>              
+          </span>
+          <p> <%= post.likes.count %> <%= (post.likes.count) == 1 ? "Like" : "Likes"%> </p>
+        </a>
+      </div>
+
+       <%= will_paginate @timeline_content, params: { controller: :static_pages, action: :home } %>
+  <% end %>
+<% end %>
+</div>
+

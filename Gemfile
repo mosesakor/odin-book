@@ -23,9 +23,17 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 
-gem 'bootstrap', '~> 5.0.0.alpha3'
+gem 'bootstrap', '~> 4.5', '>= 4.5.2'
+
 gem 'bootstrap_form', '~> 4.0'
+
 gem 'jquery-rails'
+
+gem 'faker', '~> 2.15', '>= 2.15.1'
+
+gem 'will_paginate', '~> 3.1.8'
+
+gem 'bootstrap-will_paginate', '~> 1.0.0'
 
 
 # Use Active Storage variant

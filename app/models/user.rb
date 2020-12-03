@@ -32,8 +32,13 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
+
+  def timeline
+    Post.where("user_id = ?", id)
+  end
             
-  has_many :posts
+  has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

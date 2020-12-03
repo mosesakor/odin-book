@@ -1,0 +1,7 @@
+<% if @timeline_content.any? %>
+  <ol class="posts">
+    <%= @hmm %>
+  <%= render @timeline_content %>
+  </ol>
+  <%= will_paginate @timeline_content %>
+<% end %>

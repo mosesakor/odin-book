@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   get 'users/index'
   get 'users/show'
   devise_for :users
+
+  resources :posts, only: %i[create destroy index show] do
+    resources :likes, only: %i[create destroy]
+  end
+
   authenticated :user do
     get 'users/:user_id/friends', to: 'users#friends', as: 'users_friends'
     get 'users', to: 'users#index', as: 'users'

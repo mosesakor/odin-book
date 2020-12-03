@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page])
   end
 
   def show
+    @user = current_user
+    @posts = @user.posts.paginate(page: params[:page])
   end
 
   def friends

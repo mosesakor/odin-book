@@ -20,6 +20,16 @@ li {
   list-style-type: none;
 }
 
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: #0275d8;
+    border-color: #0275d8;
+    color: white;
+}
+
 
 .share-post textarea {
   resize: none;

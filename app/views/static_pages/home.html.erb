@@ -10,7 +10,7 @@
           <div>
             <p class="img"></p>
             <p class="user-post">
-              <strong><%= post.user.first_name %></strong>
+              <strong><%= "#{post.user.first_name} #{post.user.last_name}"%></strong>
               <br>
               <%= post.content %>
               <br>
@@ -43,7 +43,7 @@
               <div class="comment">
                 <p>
                 <hr>
-                <strong><%= comment.user.first_name%> </strong>
+                <strong><%= "#{comment.user.first_name} #{comment.user.last_name}" %> </strong>
                 <br>
                 <%= comment.body %>
                 <hr>

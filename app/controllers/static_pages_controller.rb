@@ -8,6 +8,7 @@ class StaticPagesController < ApplicationController
     @timeline_content = current_user.timeline.paginate(page: params[:page])
     @comment = Comment.new
     @comments = Comment.all
+    @name = "#{current_user.first_name} #{current_user.last_name}"
     
   end
 

@@ -91,3 +91,27 @@
   </div>
 </article>
 <%end%>
+
+
+@comment = current_user.comments.new(comment_params)
+    if @comment.save
+      redirect_to request.referrer
+    else
+      flash[:alert] = 'Error'
+      redirect_to root_path
+    end
+
+
+    <%= form_for(@comment, local: true) do |comment| %>
+
+      <div>
+        <%= comment.hidden_field :user_id, value: current_user.id %>
+        <%= comment.hidden_field :post_id, value: post.id%>
+        <%= comment.label :body, "What is your comment ?" %>
+        <%= comment.text_area :body, placeholder: 'Add a comment...' %>
+      </div>
+
+      <div>
+        <%= comment.submit "Save" %>
+      </div>
+    <% end %>

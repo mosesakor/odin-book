@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'users/show'
   devise_for :users
 
+  resources :comments, only: %i[create index destroy show]
   resources :posts, only: %i[create destroy index show] do
     resources :likes, only: %i[create destroy]
   end

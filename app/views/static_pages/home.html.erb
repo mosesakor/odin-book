@@ -1,41 +1,76 @@
-<%= render 'partials/posts' %>
-<div class="col-md-8">
-<h3>Your timeline</h3>
+<section>
+  <div class="home-page">
+    <%= render 'partials/posts' %>
+    <div class="the-posts">
+    <h3>Your timeline</h3>
 
-<% if @timeline_content.any? %>
-  <% @timeline_content.each do |post| %>
-    <div class="a_post">
-      <div>
-        <p>
-        <strong><%= post.user.first_name %></strong>
-        <br>
-        <%= post.content %>
-        </p>
-        <span>
-        Posted <%= time_ago_in_words(post.created_at) %> ago.
-        </span>
-      </div>
-      <div>
-        <p>
-          <span>
-          <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
-          <% if pre_like %>
-            <%= button_to "Unlike", post_like_path(post.id, pre_like), method: :delete %>
-          <% else %>
-            <%= button_to "Like", post_likes_path(post_id: post.id), method: :post %>
-          <% end %>              
-          </span>
-          <span>
-            <% if post.user.id == current_user.id %>
-              <%= button_to 'Delete', post, method: :delete%>
-            <% end %>
-          </span>
-          <p> <%= post.likes.count %> <%= (post.likes.count) == 1 ? "Like" : "Likes"%> </p>
-        </p>
-      </div>
-  <% end %>
-  <%= will_paginate @timeline_content, params: { controller: :static_pages, action: :home } %>
-<% end %>
+    <% if @timeline_content.any? %>
+      <% @timeline_content.each do |post| %>
+        <div class="a-post">
+          <div>
+            <p class="img"></p>
+            <p class="user-post">
+              <strong><%= post.user.first_name %></strong>
+              <br>
+              <%= post.content %>
+              <br>
+              <span>
+              <i>Posted <%= time_ago_in_words(post.created_at) %> ago.</i>
+              </span>
+            </p>
 
-</div>
+            <div class="likes">
+                <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+                <div class="left"> 
+                  <% if pre_like %>
+                    <%= button_to "Unlike", post_like_path(post.id, pre_like), method: :delete, class: "button"%>
+                  <% else %>
+                    <%= button_to "Like", post_likes_path(post_id: post.id), method: :post, class: "button" %>
+                  <% end %>
+                </div>
+                <p class="like-count"> <%= post.likes.count %> <%= (post.likes.count) == 1 ? "Like" : "Likes"%> </p>
+                <div class="right">            
+                <% if post.user.id == current_user.id %>
+                  <%= button_to 'Delete', post, method: :delete%>
+                <% end %>
+                </div>
+            </div>
+         </div>
+
+          <% if @comments %>
+            <% @comments.each do |comment| %>
+              <% if post.id == comment.post_id %>
+              <div class="comment">
+                <p>
+                <hr>
+                <strong><%= comment.user.first_name%> </strong>
+                <br>
+                <%= comment.body %>
+                <hr>
+              </div>
+                <% end %>
+              <% end %>
+          <% end %>
+
+          <%= form_with(model: @comment, local: true) do |comment| %>
+          <div class="add-comment">
+            <%= comment.hidden_field :user_id, value: current_user.id %>
+            <%= comment.hidden_field :post_id, value: post.id%>
+            <div class="align">
+            <%= comment.text_area :body, placeholder: 'Leave a comment...', size: "50x2"%>
+            </div>
+            <div class="align-btn button">
+            <%= comment.submit "Comment" %> 
+            </div>
+          </div>
+          <% end %>
+    
+          </div>
+      <% end %>
+      <%= will_paginate @timeline_content, params: { controller: :static_pages, action: :home } %>
+    <% end %>
+
+    </div>
+  </div>
+</section>
 

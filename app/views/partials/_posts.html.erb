@@ -1,6 +1,6 @@
 <%= form_with(model: @post, local: true) do |f| %>
-  <div class="field">
-    <%= f.text_area :content, placeholder: "What's on your mind?" %>
+  <div class="share-post">
+    <%= f.text_area :content, placeholder: "What's on your mind?", size: "50x3" %>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+   <div class="justified"> <%= f.submit 'Share' %> </div>
 <% end %>

@@ -1,5 +1,6 @@
 <% @current_user.friend_requests.each do |user| %>
-  <p class="title is-4"> <%= user.first_name %> </p>
-  <p class="subtitle is-6"> <%= user.email %> </p>
-  <%= link_to "Accept Request", accept_friend_request_path(user.id, current_user.id), method: :put %>
+  <p> <%= user.first_name %> </p>
+  <p> <%= user.email %> </p>
+  <%= button_to "Accept friend request", accept_friend_request_path(user.id, current_user.id), method: :put %>
+  <%= button_to "Reject friend request", delete_friend_request_path(user.id, current_user.id), method: :delete %>%
 <% end %>

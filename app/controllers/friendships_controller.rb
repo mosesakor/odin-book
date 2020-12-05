@@ -2,9 +2,9 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = current_user.friendships.build(friend_id: params[:requestee_user_id], status: false)
     if @friendship.save
-      redirect_to users_friends_path(current_user), notice: 'Friend request sent'
+      redirect_to request.referrer, notice: 'Friend request sent'
     else
-      redirect_to users_friends_path(current_user), alert: 'Something went wrong'
+      redirect_to request.refferer, alert: 'Something went wrong'
     end
   end
 
@@ -27,7 +27,7 @@ class FriendshipsController < ApplicationController
                                      friend_id: params[:requestee_user_id])
     if @friendship
       @friendship.destroy
-      redirect_to user_friend_requests_path, notice: 'Friend removed'
+      redirect_to request.referrer, notice: 'Friend removed'
     else
       redirect_to root_path, alert: 'You are not allowed to do this'
     end

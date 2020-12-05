@@ -19,3 +19,79 @@
 li {
   list-style-type: none;
 }
+
+
+.share-post textarea {
+  resize: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+}
+
+div.justified {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.post-btn {
+  width: 30rem;
+}
+
+.home-page {
+  width: 75%;
+  margin: auto;
+}
+
+.the-posts {
+  width: 75%;
+  margin: auto;
+
+  h3 {
+    text-align: center;
+    margin-top: 2rem;
+  }
+}
+
+.user-post {
+  width: 75%;
+  margin: auto;
+}
+
+.likes {
+  width: 75%;
+  margin: auto;
+  display: flex;
+}
+
+.like-count {
+  line-height: 2rem;
+  margin-left: .5rem;
+}
+
+.button {
+  width: 4rem;
+}
+
+.right {
+  margin-left: auto;
+}
+
+.comment {
+  width: 65%;
+  margin: auto;
+}
+
+.add-comment {
+  width: 65%;
+  margin: auto;
+}
+
+.align {
+  margin: auto;
+}
+.align-btn {
+  width: 65%;
+  text-align: center;
+}

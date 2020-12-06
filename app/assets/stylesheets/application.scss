@@ -51,6 +51,56 @@ li.right a:hover {
   background-color: #111;
 }
 
+/*
+  Styling for friend requests page
+*/
+
+.friend-requests {
+  width: 15%;
+  margin-left: 10px;
+}
+
+.prompt-buttons {
+  display: flex;
+  width: 70%;
+}
+
+.accept input,
+.decline input {
+  background-color: #4CAF50;
+  border: 3px solid transparent;
+  color: white;
+  padding: 2px 20px;
+  text-decoration: none;
+  cursor: pointer;
+  flex: 1;
+
+  :hover,
+  :active {
+    background-color: lavender;
+  }
+}
+
+.accept input:hover,
+.decline input:hover {
+  border: 3px solid rgba(0, 0, 0, 0.733);
+}
+
+.decline input {
+  background-color: #f44336;
+  margin-left: 2px;
+}
+
+.accept a:hover {
+  color: #ffffff !important;
+background: #f6b93b;
+border-color: #f6b93b !important;
+transition: all 0.4s ease 0s;
+}
+
+.decline {
+
+}
 
 li {
   list-style-type: none;

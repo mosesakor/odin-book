@@ -3,12 +3,18 @@
 <div>
 
 <% @users.each do |user| %>
-  <p> <%= user.first_name %> </p>
+  <hr>
+  <strong> <%= "#{user.first_name} #{user.last_name}" %> </strong>
   <p> <%= user.email %> </p>
   <% if current_user.pending_friends.any? {|f| f == user } %>
-    <%= link_to "Cancel friend request", delete_friend_request_path(current_user.id, user.id), method: :delete%>
+    <div class="decline len"> 
+      <%= button_to "Cancel request", delete_friend_request_path(current_user.id, user.id), method: :delete %>
+    </div>
   <% else %>
-    <%= link_to "Add friend", friend_request_path(user.id), method: :post %>
+    <div class="accept len">
+    <%= button_to "Add friend", friend_request_path(user.id), method: :post %>
+    </div>
+  <hr>
   <% end %>
 <% end %>
 

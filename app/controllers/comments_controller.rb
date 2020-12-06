@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :find_post
+  before_action :find_post, only: :create
   #before_action :correct_user, only: :destroy
 
   def create
@@ -15,8 +15,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to request.refferer
+    redirect_to request.referrer
   end
 
   private

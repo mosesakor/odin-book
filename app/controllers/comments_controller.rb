@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   before_action :find_post, only: :create
-  #before_action :correct_user, only: :destroy
 
   def create
     @post = Post.find(params[:comment][:post_id])
@@ -30,7 +29,4 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:comment][:post_id])
   end
 
-  #def correct_user
-
-  #end
 end

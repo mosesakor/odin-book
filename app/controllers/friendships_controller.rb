@@ -4,7 +4,7 @@ class FriendshipsController < ApplicationController
     if @friendship.save
       redirect_to request.referrer, notice: 'Friend request sent'
     else
-      redirect_to request.refferer, alert: 'Something went wrong'
+      redirect_to request.referrer, alert: 'Something went wrong'
     end
   end
 
@@ -16,7 +16,7 @@ class FriendshipsController < ApplicationController
       f.status = true
       f.save
       Friendship.create(user_id: requester.id, friend_id: requestee.id, status: true)
-      redirect_to user_friend_requests_path, notice: 'Friend confirmed'
+      redirect_to request.referrer, notice: 'Friend confirmed'
     else
       redirect_to user_friend_requests_path, alert: 'Something went wrong'
     end
